@@ -1,17 +1,18 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
-
+// Get the port env variable. If the port does not exist, set it to 3000.
+const port = process.env.PORT || 3000;
 var app = express();
 
 // Register the path to store the partials.
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 // Middlewares are executed in order.
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-  // After render the maintenance.hbs, no request will be processed.
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs');
+//   // After render the maintenance.hbs, no request will be processed.
+// });
 
 // Host the public folder
 app.use(express.static(__dirname  + '/public'));
@@ -59,6 +60,6 @@ app.get('/bad', (req, res) => {
 });
 
 // Bind listener on a certain port.
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
