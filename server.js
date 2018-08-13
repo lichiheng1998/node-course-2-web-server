@@ -48,8 +48,14 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
-    pageTitle: 'About Page',
+    pageTitle: 'About Page'
   });
+})
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects'
+  })
 })
 
 // /bad - send back json with errorMessage
